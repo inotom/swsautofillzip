@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>swsautofillzip.js demo</title>
+</head>
+<body>
+  <h1>swsautofillzip.js demo</h1>
+  <form action="#">
+    <fieldset>
+      <label for="swsautofillzip-zipcode">郵便番号</label>
+      <input type="text" id="swsautofillzip-zipcode" size="10" maxlength="8">
+      <button id="swsautofillzip-search">検索</button>
+      <div class="msg" id="swsautofillzip-message"></div>
+    </fieldset>
+    <fieldset>
+      <label for="swsautofillzip-prefecture">都道府県</label>
+      <input type="text" id="swsautofillzip-prefecture" size="10">
+    </fieldset>
+    <fieldset>
+      <label for="swsautofillzip-city">市区町村</label>
+      <input type="text" id="swsautofillzip-city" size="20">
+    </fieldset>
+    <fieldset>
+      <label for="swsautofillzip-address">住所</label>
+      <input type="text" id="swsautofillzip-address" size="30">
+    </fieldset>
+    <fieldset>
+      <label for="swsautofillzip-full-address">住所(半分)</label>
+      <input type="text" id="swsautofillzip-half-address" size="60">
+    </fieldset>
+    <fieldset>
+      <label for="swsautofillzip-full-address">住所(全体)</label>
+      <input type="text" id="swsautofillzip-full-address" size="60">
+    </fieldset>
+  </form>
+  <script src="swsautofillzip.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "swsautofillzip",
+  "version": "1.0.0",
+  "description": "郵便番号から住所を自動入力する",
+  "scripts": {
+    "start": "make server & make watch",
+    "build": "make build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "iNo <wdf7322@yahoo.co.jp>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inotom/swsautofillzip.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.18.12",
+    "eslint": "^4.0.0",
+    "nodemon": "^1.11.0",
+    "uglify-js": "^3.0.17"
+  }
+}
