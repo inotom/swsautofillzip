@@ -1,6 +1,6 @@
 {
   "name": "swsautofillzip",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "郵便番号から住所を自動入力する",
   "scripts": {
     "start": "make server & make watch",
