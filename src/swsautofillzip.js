@@ -30,6 +30,28 @@
     var elMessage = document.getElementById('swsautofillzip-message');
 
     /**
+     * 検索ボタンを無効化する
+     *
+     * @returns {undefined}
+     */
+    var disableSearchButton = function() {
+      if (elSearchButton) {
+        elSearchButton.setAttribute('disabled', 'disabled');
+      }
+    };
+
+    /**
+     * 検索ボタンを有効化する
+     *
+     * @returns {undefined}
+     */
+    var enableSearchButton = function() {
+      if (elSearchButton) {
+        elSearchButton.removeAttribute('disabled');
+      }
+    };
+
+    /**
      * メッセージ表示要素が存在する場合、メッセージを表示する
      *
      * @param {string} msg メッセージ文字列.
