@@ -103,35 +103,58 @@
       };
     }
 
-    if (elSearchButton && elZipField) {
+    /**
+     * 郵便番号から住所検索実行
+     *
+     * @param {String} zipCode 郵便番号.
+     * @returns {undefined}
+     */
+    var doSearch = function(zipCode) {
+      if (zipCode.match(ZIP_RE)) {
+        var elCallbackScript = document.getElementById('swsautofillzip-callback-script');
+        if (elCallbackScript) {
+          document.body.removeChild(elCallbackScript);
+        }
+        var script = document.createElement('script');
+        script.src = API_URI + zipCode + '&callback=' + CALLBACK_NAME;
+        script.id = 'swsautofillzip-callback-script';
+        document.body.appendChild(script);
+      }
+    };
 
-      elSearchButton.setAttribute('disabled', 'disabled');
+    if (elZipField) {
+
+      // 検索ボタンの状態を初期化(無効化)
+      disableSearchButton();
 
       // 郵便番号入力値をチェックする
-      // 正しい郵便番号が入力されていた場合、検索ボタンを有効化する
       elZipField.addEventListener('keyup', function() {
         var zipCode = elZipField.value;
-        if (zipCode.match(ZIP_RE)) {
-          elSearchButton.removeAttribute('disabled');
-        } else {
-          elSearchButton.setAttribute('disabled', 'disabled');
+        var isCorrectZipCode = zipCode.match(ZIP_RE);
+
+        // 検索ボタンが有る場合
+        if (elSearchButton) {
+          // 正しい郵便番号が入力されていた場合、検索ボタンを有効化する
+          if (isCorrectZipCode) {
+            enableSearchButton();
+          } else {
+            disableSearchButton();
+          }
+        } else { // 検索ボタンが無い場合
+          // 正しい郵便番号が入力されていた場合、検索を実行する
+          if (isCorrectZipCode) {
+            doSearch(zipCode);
+          }
         }
       }, false);
 
-      elSearchButton.addEventListener('click', function(e) {
-        e.preventDefault();
-        var zipCode = elZipField.value;
-        if (zipCode.match(ZIP_RE)) {
-          var elCallbackScript = document.getElementById('swsautofillzip-callback-script');
-          if (elCallbackScript) {
-            document.body.removeChild(elCallbackScript);
-          }
-          var script = document.createElement('script');
-          script.src = API_URI + zipCode + '&callback=' + CALLBACK_NAME;
-          script.id = 'swsautofillzip-callback-script';
-          document.body.appendChild(script);
-        }
-      }, false);
+      // 検索ボタンクリックで検索を実行する
+      if (elSearchButton) {
+        elSearchButton.addEventListener('click', function(e) {
+          e.preventDefault();
+          doSearch(elZipField.value);
+        }, false);
+      }
     }
   }, false);
 })(this);
