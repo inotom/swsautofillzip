@@ -20,8 +20,8 @@
 
     // required elements
     var elZipField = document.getElementById('swsautofillzip-zipcode');
-    var elSearchButton = document.getElementById('swsautofillzip-search');
     // optional elements
+    var elSearchButton = document.getElementById('swsautofillzip-search');
     var elPrefecture = document.getElementById('swsautofillzip-prefecture');
     var elCity = document.getElementById('swsautofillzip-city');
     var elAddress = document.getElementById('swsautofillzip-address');
